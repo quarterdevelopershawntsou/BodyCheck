@@ -17,15 +17,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Override point for customization after application launch.
-        window = UIWindow(frame: UIScreen.main.bounds)
+//        window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow()
         window?.makeKeyAndVisible()
         
-        UINavigationBar.appearance().backgroundColor = .clear
-        UINavigationBar.appearance().isTranslucent = false
-        let homeController = BodyCheckController() as UIViewController
+        // setup navigation bar
+//        UINavigationBar.appearance().backgroundColor = .clear
+//        UINavigationBar.appearance().isTranslucent = false
         
-        window?.rootViewController = UINavigationController(rootViewController: homeController)
+        // setup swipe view controller
+        // UICollectionViewFlowLayout gives swiping ability
+        let layout = UICollectionViewFlowLayout()
+        // then set scroll direction as horizontal
+        layout.scrollDirection = .horizontal
+        let swipingController = HomeSwipingViewController(collectionViewLayout: layout)
         
+//        let homeController = HomeSwipingViewController() as UIViewController
+        
+//        window?.rootViewController = UINavigationController(rootViewController: homeController)
+        window?.rootViewController = swipingController
         
         
         return true
